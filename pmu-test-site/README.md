@@ -17,9 +17,9 @@ npm run dev
 ## Stack
 
 - **React + Vite** pour le front.
-- **Leaflet / react-leaflet** + tuiles OpenStreetMap pour la carte, avec un
-  filtre CSS "vieux papier / néon" appliqué aux tuiles (`.pmu-map__tiles`
-  dans `src/styles/theme.css`) plutôt qu'un autre fournisseur de tuiles.
+- **Carte vectorielle SVG maison** (`ParisVectorMap.jsx`) plutôt que
+  Leaflet/tuiles OSM — voir la section "Carte vectorielle" ci-dessous pour
+  le détail et les limites connues de cette approche.
 - **JSON local** (`src/data/pmus.json`) pour stocker les fiches PMU — les
   deux fondateurs sont les seuls contributeurs pour l'instant, pas besoin
   de backend. Migration vers une base hébergée (Postgres/SQLite serveur) à
@@ -76,6 +76,28 @@ environnement avec accès à ces sites) :
 La structure est déjà pensée pour scaler à toute la France (pas de logique
 Paris-only en dur), donc pas de refonte nécessaire pour étendre plus tard.
 
+### Carte vectorielle : ce qui est réel, ce qui est approximatif
+
+`ParisVectorMap.jsx` dessine une carte SVG faite main plutôt que d'utiliser
+des tuiles Leaflet/OSM, comme demandé. Le détail de ce qui est précis vs.
+approximatif dans cette carte :
+
+- **Contour de Paris** (`src/data/parisOutline.js`) : réel, source IGN/INSEE
+  (Admin Express COG 2018) via le dépôt GitHub `gregoiredavid/france-geojson`.
+- **Position des PMU sur la carte** : réelle, calculée par projection des
+  vraies coordonnées lat/lng de chaque PMU (`src/utils/parisProjection.js`).
+- **Numéros d'arrondissement affichés sur la carte** : approximatifs — ce
+  sont des étiquettes positionnées sur des centroïdes connus (mairies
+  d'arrondissement), **pas** un découpage précis en 20 polygones. La
+  source officielle avec les vraies frontières (opendata.paris.fr, dataset
+  "arrondissements") est inaccessible depuis l'environnement de
+  développement utilisé pour générer ce projet (proxy de sortie qui
+  bloque le domaine, ainsi que `gist.githubusercontent.com` où j'ai trouvé
+  un mirror possible). À améliorer si cette donnée devient accessible —
+  chercher un GeoJSON avec des propriétés `c_ar`/`l_ar` (20 features, un
+  polygone par arrondissement) et remplacer `ARRONDISSEMENT_LABELS` par un
+  vrai rendu de polygones.
+
 ## Modèle de données d'une fiche PMU
 
 ```json
@@ -107,4 +129,29 @@ dans le JSON.
 Cliquer sur un PMU déjà testé (carte ou liste) déclenche le jingle
 synthétisé + une pluie de portraits pendant ~1.6s (`RainEffect.jsx`). Rien
 ne se passe sur un clic PMU non testé, à part l'ouverture de sa fiche (qui
-affiche alors "pas encore testé" à la place des notes).
+affiche alors "pas encore testé" à la place des notes). Le toggle son
+(coin bas-droit, `SoundToggle.jsx`) coupe uniquement le jingle — la pluie
+visuelle continue de jouer même son coupé.
+
+## Stratégie de build : fonctionnel d'abord, polish ensuite
+
+Le brief distingue une cible visuelle finale (`vision_finale_reference.png`)
+d'un premier prompt : on construit en deux temps. Ce qui est fait dans
+cette vague 1 (fonctionnel) :
+
+- Classement numéroté avec couronne 👑 sur le #1, `???` pour les PMU pas
+  encore testés
+- Vignette photo sur chaque carte (silhouette floutée + `?` en placeholder
+  tant qu'il n'y a pas de vraie photo)
+- Toggle son on/off
+- Bandeau d'astuces qui tourne en bas de la liste (`src/data/tips.js`)
+- Carte vectorielle SVG interactive (zoom molette, drag pour déplacer,
+  boutons +/-/recentrer, marqueurs cliquables)
+
+Ce qui reste pour les vagues de polish suivantes (pas fait ici, volontairement,
+suivant la stratégie du brief) :
+
+- Mascotte secondaire qui commente sur les fiches
+- Animations de particules (comète, étincelles animées)
+- Pluie de têtes avec traînée arc-en-ciel
+- Bulles de dialogue / copywriting additionnel

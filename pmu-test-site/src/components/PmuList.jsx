@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import PmuCard from './PmuCard.jsx'
+import TipBanner from './TipBanner.jsx'
 import { computeNoteGlobale, isTeste } from '../utils/notes.js'
 
 const SORTS = {
@@ -26,6 +27,16 @@ export default function PmuList({ pmus, onSelect }) {
     })
   }, [pmus, sort])
 
+  const showRank = sort === SORTS.NOTE_DESC
+
+  const ranked = useMemo(() => {
+    return sorted.reduce((acc, pmu) => {
+      const previousRank = acc.length > 0 ? acc[acc.length - 1].rank : 0
+      const rank = isTeste(pmu) ? previousRank + 1 : previousRank
+      return [...acc, { pmu, rank }]
+    }, [])
+  }, [sorted])
+
   return (
     <section className="pmu-list">
       <div className="pmu-list__toolbar">
@@ -46,11 +57,19 @@ export default function PmuList({ pmus, onSelect }) {
         </p>
       ) : (
         <div className="pmu-list__items">
-          {sorted.map((pmu) => (
-            <PmuCard key={pmu.id} pmu={pmu} onClick={onSelect} />
+          {ranked.map(({ pmu, rank }) => (
+            <PmuCard
+              key={pmu.id}
+              pmu={pmu}
+              onClick={onSelect}
+              rank={rank}
+              showRank={showRank}
+            />
           ))}
         </div>
       )}
+
+      <TipBanner />
     </section>
   )
 }
