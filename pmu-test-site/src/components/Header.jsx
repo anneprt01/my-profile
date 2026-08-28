@@ -12,7 +12,7 @@ export default function Header({ activeTab, onChangeTab, testedCount, totalCount
         <Mascot size={100} />
         <div className="site-header__titles">
           <h1 className="site-header__title">
-            Le Grand Tour des <span className="text-neon-red">PMU</span>
+            Misé, Pesé, <span className="text-neon-red">Approuvé</span>
           </h1>
           <p className="site-header__subtitle">
             Deux potes, une mission sacrée : goûter le café (ou le rouge) de

@@ -1,8 +1,8 @@
-# Le Grand Tour des PMU
+# Misé, Pesé, Approuvé
 
-Site (nom provisoire — à trancher) créé par deux potes pour tester et noter
-tous les PMU de France, en commençant par Paris. Ton goofy, second degré,
-esthétique néon rétro-arcade / pixel art fusionnée avec le rouge PMU.
+Site créé par deux potes pour tester et noter tous les PMU de France, en
+commençant par Paris. Ton goofy, second degré, esthétique néon rétro-arcade
+/ pixel art fusionnée avec le rouge PMU.
 
 Voir le brief complet transmis au démarrage du projet pour le concept, la
 direction artistique et le modèle de données détaillé.
@@ -75,12 +75,6 @@ environnement avec accès à ces sites) :
 
 La structure est déjà pensée pour scaler à toute la France (pas de logique
 Paris-only en dur), donc pas de refonte nécessaire pour étendre plus tard.
-
-### Nom du site
-
-Pas encore choisi. `App.jsx` / `Header.jsx` utilisent "Le Grand Tour des
-PMU" comme titre temporaire — à remplacer partout (titre HTML, header,
-`package.json`) une fois tranché.
 
 ## Modèle de données d'une fiche PMU
 
