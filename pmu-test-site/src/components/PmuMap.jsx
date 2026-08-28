@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import HorseshoeRating from './HorseshoeRating.jsx'
+import StatusPill from './StatusPill.jsx'
 import { createHorseshoeIcon } from '../utils/leafletIcons.js'
 import { computeNoteGlobale, isTeste } from '../utils/notes.js'
 
@@ -29,18 +30,20 @@ export default function PmuMap({ pmus, onSelect }) {
                 key={pmu.id}
                 position={[pmu.lat, pmu.lng]}
                 icon={createHorseshoeIcon(teste)}
-                eventHandlers={teste ? { click: () => onSelect(pmu) } : {}}
+                eventHandlers={{ click: () => onSelect(pmu) }}
               >
-                <Popup>
-                  <strong>{pmu.nom}</strong>
-                  <br />
-                  {pmu.adresse}
-                  <br />
-                  {teste ? (
-                    <HorseshoeRating value={note} size={14} />
-                  ) : (
-                    <em>Pas encore testé — un jour, les gars, un jour.</em>
-                  )}
+                <Popup className="pmu-popup">
+                  <div className="pmu-popup__inner">
+                    <h4 className="pmu-popup__nom">{pmu.nom}</h4>
+                    <p className="pmu-popup__adresse">{pmu.adresse}</p>
+                    <HorseshoeRating value={note} size={13} showValue={false} />
+                    <div className="pmu-popup__footer">
+                      <StatusPill teste={teste} />
+                      {teste && note !== null && (
+                        <span className="pmu-popup__score">{note.toString().replace('.', ',')}</span>
+                      )}
+                    </div>
+                  </div>
                 </Popup>
               </Marker>
             )

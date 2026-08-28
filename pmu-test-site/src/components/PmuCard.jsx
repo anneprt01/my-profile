@@ -1,4 +1,5 @@
 import HorseshoeRating from './HorseshoeRating.jsx'
+import StatusPill from './StatusPill.jsx'
 import { computeNoteGlobale, isTeste } from '../utils/notes.js'
 
 export default function PmuCard({ pmu, onClick }) {
@@ -14,12 +15,12 @@ export default function PmuCard({ pmu, onClick }) {
       <div className="pmu-card__info">
         <h3 className="pmu-card__nom">{pmu.nom}</h3>
         <p className="pmu-card__adresse">{pmu.adresse}</p>
+        <HorseshoeRating value={note} size={15} showValue={false} />
       </div>
-      <div className="pmu-card__note">
-        {teste ? (
-          <HorseshoeRating value={note} />
-        ) : (
-          <span className="badge badge--pas-teste">Pas encore testé</span>
+      <div className="pmu-card__right">
+        <StatusPill teste={teste} />
+        {teste && note !== null && (
+          <span className="pmu-card__score">{note.toString().replace('.', ',')}</span>
         )}
       </div>
     </button>
