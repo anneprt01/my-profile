@@ -1,0 +1,30 @@
+:root {
+  /* Palette verrouillée — MISE_PESE_APPROUVE_Design_Spec_V1 */
+  --color-bg: #0f060d;
+  --color-red: #e71521;
+  --color-red-dark: #9a161d;
+  --color-gold: #f9cf2c;
+  --color-gold-light: #f8d852;
+  --color-cyan: #23e5da;
+  --color-cyan-light: #4feed1;
+  --color-cyan-dark: #125859;
+  --color-magenta: #e42e51;
+  --color-white: #f2ece3;
+  --color-muted: #a49c9a;
+  --color-disabled: #625b5d;
+
+  /* Fonds dérivés */
+  --color-bg-raised: #1c0f18;
+  --color-bg-panel: #170b14;
+  --color-bg-panel-2: #200f1b;
+  --color-outline: #05020a;
+
+  --font-display: "Bungee", "Impact", sans-serif;
+  --font-arcade: "Press Start 2P", "Courier New", monospace;
+  --font-body: "Pixelify Sans", "Comic Sans MS", sans-serif;
+
+  --radius-card: 6px;
+  --radius-pill: 999px;
+
+  --shell-max-width: 1536px;
+}

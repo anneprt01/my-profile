@@ -1,0 +1,49 @@
+.city-counter {
+  justify-self: end;
+  background: linear-gradient(180deg, var(--color-bg-raised), var(--color-bg-panel));
+  border: 2px solid var(--color-cyan);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 0 0 2px var(--color-outline),
+    0 0 16px rgba(35, 229, 218, 0.35);
+  padding: 8px 14px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.city-counter__city {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-arcade);
+  font-size: 0.6rem;
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+}
+
+.city-counter__figure {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-gold);
+  text-shadow: 0 0 12px rgba(249, 207, 44, 0.6);
+  line-height: 1.1;
+}
+
+.city-counter__slash {
+  color: var(--color-muted);
+  margin: 0 2px;
+}
+
+.city-counter__label {
+  font-family: var(--font-arcade);
+  font-size: 0.45rem;
+  color: var(--color-cyan-light);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .city-counter {
+    justify-self: center;
+  }
+}

@@ -1,0 +1,81 @@
+.tabs-bar {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 10px clamp(16px, 3vw, 40px) 18px;
+}
+
+.tabs-bar__tabs {
+  display: flex;
+  gap: 14px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: var(--font-arcade);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  background: var(--color-bg-panel);
+  border: 2px solid var(--color-disabled);
+  border-radius: var(--radius-card);
+  padding: 12px 22px;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.tab:hover {
+  transform: translateY(-1px);
+}
+
+.tab--classement.is-active {
+  color: var(--color-white);
+  border-color: var(--color-red);
+  background: linear-gradient(180deg, var(--color-red), var(--color-red-dark));
+  box-shadow:
+    0 0 0 2px var(--color-outline),
+    0 0 18px rgba(231, 21, 33, 0.55);
+}
+
+.tab--carte.is-active {
+  color: var(--color-bg);
+  border-color: var(--color-cyan);
+  background: linear-gradient(180deg, var(--color-cyan-light), var(--color-cyan));
+  box-shadow:
+    0 0 0 2px var(--color-outline),
+    0 0 18px rgba(35, 229, 218, 0.55);
+}
+
+.survey-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-panel);
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px 6px 6px;
+  box-shadow: 0 0 12px rgba(249, 207, 44, 0.3);
+}
+
+.survey-badge__mascot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.survey-badge__text {
+  font-family: var(--font-arcade);
+  font-size: 0.5rem;
+  color: var(--color-gold-light);
+  letter-spacing: 0.02em;
+}
