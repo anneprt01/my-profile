@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import ArcadeBackground from './components/ArcadeBackground.jsx'
 import Header from './components/Header.jsx'
 import PmuList from './components/PmuList.jsx'
 import PmuMap from './components/PmuMap.jsx'
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <ArcadeBackground />
       <Header
         activeTab={activeTab}
         onChangeTab={setActiveTab}
