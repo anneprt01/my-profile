@@ -1,0 +1,475 @@
+/* ==========================================================================
+   Le Grand Tour des PMU — thème néon rétro-arcade / rouge PMU
+   ========================================================================== */
+
+:root {
+  --bg-void: #0a0a0f;
+  --bg-panel: #14141c;
+  --bg-panel-raised: #1c1c28;
+  --border-soft: #2a2a3a;
+
+  --pmu-red: #ff2d3d;
+  --pmu-red-dim: #b3131f;
+  --turf-gold: #f4c430;
+  --turf-gold-dim: #a5860a;
+  --neon-cyan: #35f2e8;
+  --neon-magenta: #ff3df0;
+  --white: #f5f2ea;
+  --grey-muted: #8a8a94;
+
+  --font-display: 'Press Start 2P', 'Courier New', monospace;
+  --font-body: 'Rubik', system-ui, sans-serif;
+
+  --glow-red: 0 0 8px rgba(255, 45, 61, 0.7), 0 0 22px rgba(255, 45, 61, 0.35);
+  --glow-gold: 0 0 8px rgba(244, 196, 48, 0.7), 0 0 20px rgba(244, 196, 48, 0.3);
+  --glow-cyan: 0 0 8px rgba(53, 242, 232, 0.6), 0 0 18px rgba(53, 242, 232, 0.3);
+}
+
+body {
+  background: radial-gradient(circle at top, #17141d 0%, var(--bg-void) 70%);
+  color: var(--white);
+  font-family: var(--font-body);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  padding: 28px 20px 0;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.site-header__top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-header__titles {
+  flex: 1;
+  min-width: 260px;
+}
+
+.site-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 32px);
+  line-height: 1.4;
+  margin: 0 0 12px;
+  color: var(--white);
+  text-shadow: 0 0 2px #000;
+}
+
+.text-neon-red {
+  color: var(--pmu-red);
+  text-shadow: var(--glow-red);
+}
+
+.site-header__subtitle {
+  margin: 0 0 8px;
+  color: #cfcbe0;
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+.site-header__counter {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--turf-gold);
+  text-shadow: var(--glow-gold);
+}
+
+.site-header__nav {
+  display: flex;
+  gap: 10px;
+  margin: 28px 0 0;
+  border-bottom: 2px solid var(--border-soft);
+}
+
+.nav-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--grey-muted);
+  font-family: var(--font-display);
+  font-size: 11px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-tab:hover {
+  color: var(--neon-cyan);
+}
+
+.nav-tab.is-active {
+  color: var(--pmu-red);
+  border-bottom-color: var(--pmu-red);
+  text-shadow: var(--glow-red);
+}
+
+/* ---------- Mascot ---------- */
+
+.mascot {
+  filter: drop-shadow(0 0 10px rgba(255, 45, 61, 0.45));
+  image-rendering: pixelated;
+}
+
+.safe-image-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2em;
+  line-height: 1;
+}
+
+/* ---------- Main / layout ---------- */
+
+.app__main {
+  flex: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px 20px 60px;
+}
+
+.app__footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--grey-muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ---------- Horseshoe rating ---------- */
+
+.horseshoe-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.horseshoe-rating--empty {
+  color: var(--grey-muted);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.horseshoe-rating__icons {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.horseshoe-icon.is-filled {
+  color: var(--turf-gold);
+  filter: drop-shadow(0 0 4px rgba(244, 196, 48, 0.6));
+}
+
+.horseshoe-icon.is-empty {
+  color: #3a3a48;
+}
+
+.horseshoe-rating__value {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--turf-gold);
+}
+
+/* ---------- List ---------- */
+
+.pmu-list__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--grey-muted);
+  font-size: 14px;
+}
+
+.pmu-list__toolbar select {
+  background: var(--bg-panel);
+  color: var(--white);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.pmu-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pmu-list__empty {
+  color: var(--grey-muted);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.pmu-card {
+  appearance: none;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-panel);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.pmu-card--teste:hover {
+  transform: translateY(-2px);
+  border-color: var(--pmu-red);
+  box-shadow: var(--glow-red);
+}
+
+.pmu-card--pas-teste {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.pmu-card--pas-teste:hover {
+  border-color: var(--border-soft);
+}
+
+.pmu-card__nom {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.pmu-card__adresse {
+  margin: 0;
+  font-size: 13px;
+  color: var(--grey-muted);
+}
+
+.badge {
+  font-family: var(--font-display);
+  font-size: 9px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge--pas-teste {
+  background: rgba(138, 138, 148, 0.15);
+  color: var(--grey-muted);
+  border: 1px solid var(--border-soft);
+}
+
+/* ---------- Map ---------- */
+
+.pmu-map__frame {
+  border: 2px solid var(--border-soft);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--glow-cyan);
+}
+
+.pmu-map__leaflet {
+  height: 560px;
+  width: 100%;
+  background: var(--bg-void);
+}
+
+/* Filtre "vieux papier / néon rétro" appliqué aux tuiles OSM standard. */
+.pmu-map__tiles {
+  filter: sepia(0.45) hue-rotate(-8deg) saturate(1.3) brightness(0.75) contrast(1.05);
+}
+
+.pmu-map__legende {
+  display: flex;
+  gap: 20px;
+  margin: 12px 4px 0;
+  font-size: 13px;
+  color: var(--grey-muted);
+}
+
+.legende-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legende-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legende-swatch--or {
+  background: var(--turf-gold);
+  box-shadow: var(--glow-gold);
+}
+
+.legende-swatch--terne {
+  background: var(--grey-muted);
+  opacity: 0.5;
+}
+
+/* ---------- Detail / fiche modal ---------- */
+
+.pmu-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 10, 0.82);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.pmu-detail {
+  position: relative;
+  background: var(--bg-panel-raised);
+  border: 2px solid var(--pmu-red);
+  box-shadow: var(--glow-red);
+  border-radius: 14px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+}
+
+.pmu-detail__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  color: var(--white);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.pmu-detail__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-soft);
+}
+
+.pmu-detail__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pmu-detail__nom {
+  font-family: var(--font-display);
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.pmu-detail__adresse {
+  color: var(--grey-muted);
+  margin: 0 0 16px;
+}
+
+.pmu-detail__note-globale {
+  margin-bottom: 18px;
+}
+
+.pmu-detail__criteres {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pmu-detail__critere {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 12px;
+}
+
+.pmu-detail__critere-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pmu-detail__critere-desc {
+  font-size: 12px;
+  color: var(--grey-muted);
+}
+
+.pmu-detail__pas-teste {
+  color: var(--grey-muted);
+  font-style: italic;
+}
+
+.pmu-detail__commentaire {
+  margin: 20px 0 0;
+  padding: 14px;
+  border-left: 3px solid var(--neon-magenta);
+  color: #e6c9ff;
+  font-style: italic;
+}
+
+/* ---------- Rain effect ---------- */
+
+.rain-effect {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.rain-effect__drop {
+  position: absolute;
+  top: -15%;
+  image-rendering: pixelated;
+  animation-name: rain-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  filter: drop-shadow(0 0 6px rgba(255, 45, 61, 0.5));
+}
+
+@keyframes rain-fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(120vh) rotate(var(--rotation));
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rain-effect__drop {
+    animation: none;
+    display: none;
+  }
+}

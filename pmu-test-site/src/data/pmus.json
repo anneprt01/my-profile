@@ -1,0 +1,68 @@
+[
+  {
+    "id": "cafe-tabac-hauteville",
+    "nom": "Café Tabac d'Hauteville",
+    "adresse": "16 Rue d'Hauteville, 75010 Paris",
+    "lat": 48.8747,
+    "lng": 2.3495,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  },
+  {
+    "id": "brasserie-le-cheval-noir",
+    "nom": "Brasserie Le Cheval Noir",
+    "adresse": "127 Boulevard de Magenta, 75010 Paris",
+    "lat": 48.8810,
+    "lng": 2.3562,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  },
+  {
+    "id": "dix-neuf-mai-presse",
+    "nom": "19 Mai Presse",
+    "adresse": "18 Rue Olivier de Serres, 75015 Paris",
+    "lat": 48.8375,
+    "lng": 2.2989,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  },
+  {
+    "id": "avia-station-emile-zola",
+    "nom": "Avia Station Émile Zola",
+    "adresse": "21 Avenue Émile Zola, 75015 Paris",
+    "lat": 48.8495,
+    "lng": 2.2862,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  },
+  {
+    "id": "avia-station-garibaldi",
+    "nom": "Avia Station Garibaldi",
+    "adresse": "7-11 Boulevard Garibaldi, 75015 Paris",
+    "lat": 48.8459,
+    "lng": 2.2996,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  },
+  {
+    "id": "pmu-le-tierce",
+    "nom": "PMU Le Tiercé",
+    "adresse": "3 Place Auguste Métivier, 75020 Paris",
+    "lat": 48.8721,
+    "lng": 2.3835,
+    "statut": "pas_teste",
+    "photoFiche": null,
+    "notes": null,
+    "commentaire": ""
+  }
+]
