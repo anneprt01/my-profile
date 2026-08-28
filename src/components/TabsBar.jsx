@@ -2,6 +2,7 @@ import { useState } from "react";
 import Trophy from "./icons/Trophy";
 import MapPin from "./icons/MapPin";
 import Mascot from "./Mascot";
+import MusicNote from "./icons/MusicNote";
 import "./TabsBar.css";
 
 const TABS = [
@@ -33,6 +34,13 @@ export default function TabsBar({ activeTab, onChange }) {
           <Mascot variant="horse-head" alt="" compact />
         </div>
         <span className="survey-badge__text">ENQUÊTE DE COMPTOIR EN COURS...</span>
+      </div>
+
+      <div className="sound-hint" aria-hidden="true">
+        <div className="sound-hint__mascot">
+          <Mascot variant="horse-head" alt="" compact />
+        </div>
+        <MusicNote size={12} />
       </div>
     </nav>
   );

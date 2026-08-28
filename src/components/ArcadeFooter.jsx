@@ -18,13 +18,12 @@ export default function ArcadeFooter() {
           Clic sur un PMU infiltré = pluie de têtes !
         </p>
 
-        <Rainbow size={48} />
-
-        <div className="arcade-footer__heads">
-          <div className="arcade-footer__head arcade-footer__head--small">
+        <div className="arcade-footer__rain">
+          <Rainbow size={52} className="arcade-footer__rainbow" />
+          <div className="arcade-footer__head arcade-footer__head--small arcade-footer__head--rain1">
             <Mascot variant="anne-head" alt="" compact />
           </div>
-          <div className="arcade-footer__head arcade-footer__head--small">
+          <div className="arcade-footer__head arcade-footer__head--small arcade-footer__head--rain2">
             <Mascot variant="friend-head" alt="" compact />
           </div>
         </div>
@@ -41,7 +40,7 @@ export default function ArcadeFooter() {
       </div>
 
       <div className="arcade-footer__mascot2">
-        <Mascot variant="horse-run" alt="" compact flip />
+        <Mascot variant="horse-run" alt="" flip />
       </div>
     </footer>
   );

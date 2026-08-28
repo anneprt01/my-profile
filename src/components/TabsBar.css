@@ -1,4 +1,5 @@
 .tabs-bar {
+  position: relative;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -78,4 +79,27 @@
   font-size: 0.5rem;
   color: var(--color-gold-light);
   letter-spacing: 0.02em;
+}
+
+.sound-hint {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+@media (min-width: 1150px) {
+  .sound-hint {
+    position: absolute;
+    right: clamp(16px, 3vw, 40px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.sound-hint__mascot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
 }

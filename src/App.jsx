@@ -5,6 +5,7 @@ import TabsBar from "./components/TabsBar";
 import RankingList from "./components/RankingList";
 import MapPanel from "./components/MapPanel";
 import ArcadeFooter from "./components/ArcadeFooter";
+import ReactionBubble from "./components/ReactionBubble";
 import { DEMO_RANKING, DEMO_DETAIL, DEMO_COUNTER } from "./data/demoContent";
 import "./App.css";
 
@@ -20,10 +21,14 @@ export default function App() {
         <Header counter={DEMO_COUNTER} />
         <TabsBar activeTab={activeTab} onChange={setActiveTab} />
 
-        <main className="shell__body">
-          <RankingList entries={DEMO_RANKING} selectedId={selectedId} onSelect={setSelectedId} />
-          <MapPanel detail={DEMO_DETAIL} />
-        </main>
+        <div className="shell__main">
+          <ReactionBubble text="HOP HOP HOP ! ON INFILTRE !" className="shell__reaction" />
+
+          <main className="shell__body">
+            <RankingList entries={DEMO_RANKING} selectedId={selectedId} onSelect={setSelectedId} />
+            <MapPanel detail={DEMO_DETAIL} />
+          </main>
+        </div>
 
         <ArcadeFooter />
       </div>
